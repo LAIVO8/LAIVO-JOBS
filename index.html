@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101114">
+<title>LAIVO | منصة التوظيف العراقية</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--black:#101114;
+--dark:#191a1f;
+--orange:#ff7518;
+--white:#fff;
+--gray:#f5f5f6;
+--text:#292a30;
+--muted:#777;
+--border:#e9e9ec;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:'Cairo',sans-serif;
+color:var(--text);
+background:white;
+}
+
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+
+header{
+background:var(--black);
+color:white;
+padding:15px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:30px;
+font-weight:900;
+letter-spacing:2px;
+color:white;
+}
+
+.logo span{color:var(--orange)}
+
+nav{
+display:flex;
+gap:20px;
+align-items:center;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+font-size:13px;
+font-weight:600;
+}
+
+nav a:hover{color:var(--orange)}
+
+.btn{
+background:var(--orange);
+border:none;
+color:white;
+padding:11px 20px;
+border-radius:7px;
+font-weight:700;
+font-size:13px;
+}
+
+.btn:hover{background:#e95f08}
+
+.btn-dark{
+background:var(--black);
+color:white;
+}
+
+.hero{
+background:linear-gradient(120deg,#101114,#29252b);
+color:white;
+text-align:center;
+padding:85px 6%;
+}
+
+.hero .badge{
+color:var(--orange);
+font-size:13px;
+font-weight:800;
+}
+
+.hero h1{
+font-size:43px;
+font-weight:900;
+margin:15px 0;
+}
+
+.hero h1 span{color:var(--orange)}
+
+.hero p{
+color:#bbb;
+font-size:15px;
+margin-bottom:30px;
+}
+
+.search-box{
+max-width:1000px;
+margin:auto;
+background:white;
+padding:12px;
+border-radius:12px;
+display:grid;
+grid-template-columns:2fr 1fr 1fr auto;
+gap:10px;
+}
+
+.search-box input,
+.search-box select{
+width:100%;
+padding:14px;
+border:1px solid var(--border);
+border-radius:7px;
+outline:none;
+}
+
+.section{
+padding:65px 7%;
+}
+
+.section-head{
+margin-bottom:30px;
+}
+
+.section-head h2{
+font-size:27px;
+font-weight:900;
+}
+
+.section-head p{
+color:var(--muted);
+font-size:13px;
+margin-top:5px;
+}
+
+.stats{
+background:#f8f8f8;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+text-align:center;
+padding:35px 7%;
+gap:15px;
+}
+
+.stat strong{
+font-size:29px;
+color:var(--orange);
+display:block;
+}
+
+.stat span{
+font-size:12px;
+color:#777;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.card{
+background:white;
+border:1px solid var(--border);
+padding:22px;
+border-radius:12px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:var(--orange);
+box-shadow:0 10px 30px #0000000c;
+}
+
+.card h3{
+font-size:17px;
+margin:8px 0;
+}
+
+.card p{
+color:#777;
+font-size:12px;
+margin:5px 0;
+}
+
+.tag{
+display:inline-block;
+background:#fff0e6;
+color:#ed690e;
+padding:5px 10px;
+border-radius:30px;
+font-size:11px;
+}
+
+.card .btn{margin-top:15px}
+
+.categories{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+}
+
+.category{
+padding:22px 10px;
+background:#f6f6f7;
+border-radius:10px;
+text-align:center;
+font-weight:800;
+font-size:13px;
+cursor:pointer;
+transition:.3s;
+}
+
+.category:hover{
+background:var(--orange);
+color:white;
+}
+
+.governorates{
+display:grid;
+grid-template-columns:repeat(6,1fr);
+gap:10px;
+}
+
+.gov{
+background:#f6f6f7;
+padding:13px 5px;
+border-radius:8px;
+text-align:center;
+font-size:12px;
+font-weight:700;
+}
+
+.gov:hover{
+background:var(--orange);
+color:white;
+}
+
+.dark-section{
+background:var(--black);
+color:white;
+}
+
+.dark-section .section-head p{color:#aaa}
+
+.feature-box{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+.feature{
+border:1px solid #333;
+padding:25px;
+border-radius:12px;
+}
+
+.feature h3{
+color:var(--orange);
+margin:10px 0;
+}
+
+.feature p{
+font-size:12px;
+color:#bbb;
+line-height:2;
+}
+
+.cta{
+background:#fff2e9;
+text-align:center;
+padding:55px 15px;
+}
+
+.cta h2{font-size:27px}
+
+.cta p{
+color:#777;
+margin:12px 0 20px;
+}
+
+footer{
+background:#090a0d;
+color:#aaa;
+padding:45px 7%;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:2fr 1fr 1fr;
+gap:30px;
+}
+
+footer h3{
+color:white;
+margin-bottom:12px;
+}
+
+footer p,footer a{
+font-size:12px;
+line-height:2.5;
+color:#aaa;
+text-decoration:none;
+display:block;
+}
+
+footer a:hover{color:var(--orange)}
+
+.copyright{
+border-top:1px solid #292929;
+text-align:center;
+margin-top:30px;
+padding-top:20px;
+font-size:11px;
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#000b;
+z-index:300;
+justify-content:center;
+align-items:center;
+padding:15px;
+}
+
+.modal-content{
+background:white;
+width:100%;
+max-width:480px;
+padding:25px;
+border-radius:13px;
+max-height:90vh;
+overflow:auto;
+}
+
+.modal-content h2{margin-bottom:15px}
+
+.modal-content input,
+.modal-content select,
+.modal-content textarea{
+width:100%;
+padding:12px;
+border:1px solid #ddd;
+border-radius:7px;
+margin:7px 0;
+}
+
+.modal-content textarea{
+min-height:80px;
+resize:vertical;
+}
+
+.close{
+float:left;
+font-size:23px;
+cursor:pointer;
+}
+
+.modal-content .btn{
+width:100%;
+margin-top:12px;
+}
+
+.admin{
+background:#f5f5f6;
+}
+
+.admin-box{
+background:white;
+padding:20px;
+border-radius:10px;
+margin-bottom:15px;
+border:1px solid var(--border);
+}
+
+.admin-box strong{
+font-size:24px;
+color:var(--orange);
+}
+
+.telegram{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#229ed9;
+color:white;
+text-decoration:none;
+padding:13px 18px;
+border-radius:50px;
+font-size:13px;
+font-weight:800;
+z-index:200;
+box-shadow:0 5px 20px #0002;
+}
+
+.empty{
+color:#888;
+padding:20px;
+text-align:center;
+}
+
+@media(max-width:850px){
+nav{display:none}
+.hero h1{font-size:30px}
+.search-box{grid-template-columns:1fr}
+.grid{grid-template-columns:repeat(2,1fr)}
+.categories{grid-template-columns:repeat(2,1fr)}
+.governorates{grid-template-columns:repeat(3,1fr)}
+.feature-box{grid-template-columns:1fr}
+}
+
+@media(max-width:520px){
+header{padding:12px 5%}
+.logo{font-size:25px}
+.hero{padding:55px 5%}
+.grid{grid-template-columns:1fr}
+.stats{grid-template-columns:repeat(2,1fr)}
+.section{padding:45px 5%}
+.footer-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">LAI<span>VO</span></div>
+
+<nav>
+<a href="#home">الرئيسية</a>
+<a href="#jobs">الوظائف</a>
+<a href="#companies">الشركات</a>
+<a href="#agencies">الوكالات</a>
+<a href="#governorates">المحافظات</a>
+<a href="#about">من نحن</a>
+</nav>
+
+<button class="btn" onclick="openModal('login')">دخول</button>
+</header>
+
+<main>
+
+<div class="hero" id="home">
+
+<div class="badge">IRAQ'S RECRUITMENT PLATFORM</div>
+
+<h1>اكتشف مستقبلك <span>المهني</span></h1>
+
+<p>
+منصة LAIVO تجمع الباحثين عن العمل والشركات ووكالات التوظيف في العراق.
+</p>
+
+<div class="search-box">
+
+<input id="keyword" placeholder="المسمى الوظيفي أو التخصص">
+
+<select id="location">
+<option value="">جميع المحافظات</option>
+</select>
+
+<select id="jobType">
+<option value="">جميع التخصصات</option>
+<option>إدارة</option>
+<option>محاسبة</option>
+<option>هندسة</option>
+<option>تسويق</option>
+<option>تقنية</option>
+<option>تصميم</option>
+<option>طب</option>
+<option>تعليم</option>
+</select>
+
+<button class="btn" onclick="searchJobs()">ابحث عن وظيفة</button>
+
+</div>
+</div>
+
+<div class="stats">
+<div class="stat"><strong>18</strong><span>محافظة عراقية</span></div>
+<div class="stat"><strong>3</strong><span>أنواع حسابات رئيسية</span></div>
+<div class="stat"><strong>24/7</strong><span>منصة متاحة دائماً</span></div>
+<div class="stat"><strong>LAIVO</strong><span>مستقبلك المهني</span></div>
+</div>
+
+<section class="section" id="jobs">
+
+<div class="section-head">
+<h2>أحدث الوظائف</h2>
+<p>اكتشف فرص العمل المتاحة في مختلف أنحاء العراق.</p>
+</div>
+
+<div class="grid" id="jobsList"></div>
+
+</section>
+
+<section class="section" style="background:#f8f8f8">
+
+<div class="section-head">
+<h2>التخصصات الوظيفية</h2>
+<p>اختر مجال عملك واستكشف الفرص المناسبة.</p>
+</div>
+
+<div class="categories">
+<div class="category" onclick="filterCategory('إدارة')">💼 الإدارة</div>
+<div class="category" onclick="filterCategory('محاسبة')">📊 المحاسبة</div>
+<div class="category" onclick="filterCategory('هندسة')">🏗️ الهندسة</div>
+<div class="category" onclick="filterCategory('تقنية')">💻 تقنية المعلومات</div>
+<div class="category" onclick="filterCategory('تسويق')">📢 التسويق</div>
+<div class="category" onclick="filterCategory('تصميم')">🎨 التصميم</div>
+<div class="category" onclick="filterCategory('طب')">🏥 الطب والصحة</div>
+<div class="category" onclick="filterCategory('تعليم')">📚 التعليم</div>
+<div class="category" onclick="filterCategory('مبيعات')">🤝 المبيعات</div>
+<div class="category" onclick="filterCategory('مالية')">💰 المالية</div>
+<div class="category" onclick="filterCategory('قانون')">⚖️ القانون</div>
+<div class="category" onclick="filterCategory('موارد بشرية')">👥 الموارد البشرية</div>
+</div>
+
+</section>
+
+<section class="section" id="governorates">
+
+<div class="section-head">
+<h2>جميع محافظات العراق</h2>
+<p>ابحث عن الوظائف بالقرب منك.</p>
+</div>
+
+<div class="governorates" id="govGrid"></div>
+
+</section>
+
+<section class="section" id="companies" style="background:#f8f8f8">
+
+<div class="section-head">
+<h2>الشركات العراقية</h2>
+<p>بوابتك للوصول إلى الكفاءات والمواهب.</p>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>حساب الشركات</h3>
+<p>أنشئ ملفاً تعريفياً لشركتك وانشر الوظائف الشاغرة واستقبل طلبات التوظيف.</p>
+<button class="btn" onclick="openModal('company')">تسجيل شركة</button>
+</div>
+
+<div class="card">
+<h3>إدارة الوظائف</h3>
+<p>أضف الوظائف وحدد المؤهلات والراتب والمحافظة المطلوبة.</p>
+<button class="btn" onclick="openModal('job')">نشر وظيفة</button>
+</div>
+
+<div class="card">
+<h3>البحث عن المواهب</h3>
+<p>استكشف الكفاءات والمهارات المهنية للباحثين عن العمل.</p>
+<button class="btn" onclick="openModal('register')">إنشاء حساب</button>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="agencies">
+
+<div class="section-head">
+<h2>وكالات التوظيف</h2>
+<p>مساحة متخصصة لوكالات التوظيف العراقية.</p>
+</div>
+
+<div class="feature-box">
+
+<div class="feature">
+<h3>01 | تسجيل الوكالات</h3>
+<p>إنشاء ملف خاص بالوكالة وإضافة بياناتها ومعلومات التواصل.</p>
+</div>
+
+<div class="feature">
+<h3>02 | إدارة المرشحين</h3>
+<p>إدارة بيانات المرشحين ومؤهلاتهم ومتابعة مراحل التوظيف.</p>
+</div>
+
+<div class="feature">
+<h3>03 | التعاون مع الشركات</h3>
+<p>ربط الوكالات بالشركات التي تبحث عن موظفين وكفاءات.</p>
+</div>
+
+</div>
+
+<button class="btn" style="margin-top:25px" onclick="openModal('agency')">سجل وكالة توظيف</button>
+
+</section>
+
+<section class="section dark-section" id="about">
+
+<div class="section-head">
+<h2>لماذا LAIVO؟</h2>
+<p>نطمح إلى تطوير تجربة التوظيف في العراق.</p>
+</div>
+
+<div class="feature-box">
+
+<div class="feature">
+<h3>تجربة موحدة</h3>
+<p>منصة تجمع الشركات والوكالات والباحثين عن العمل.</p>
+</div>
+
+<div class="feature">
+<h3>تغطية العراق</h3>
+<p>إمكانية البحث عن الوظائف في المحافظات العراقية كافة.</p>
+</div>
+
+<div class="feature">
+<h3>فرص أكثر</h3>
+<p>تسهيل الوصول إلى الفرص الوظيفية المناسبة.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="dashboard">
+
+<div class="section-head">
+<h2>لوحة إدارة LAIVO</h2>
+<p>لوحة تجريبية لمتابعة بيانات الموقع على هذا الجهاز.</p>
+</div>
+
+<div class="grid">
+
+<div class="admin-box">
+<p>الوظائف المسجلة</p>
+<strong id="adminJobs">0</strong>
+</div>
+
+<div class="admin-box">
+<p>الشركات المسجلة</p>
+<strong id="adminCompanies">0</strong>
+</div>
+
+<div class="admin-box">
+<p>وكالات التوظيف</p>
+<strong id="adminAgencies">0</strong>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+<h2>ابدأ رحلتك المهنية مع LAIVO</h2>
+<p>أنشئ حسابك واستكشف الفرص المتاحة في العراق.</p>
+<button class="btn" onclick="openModal('register')">إنشاء حساب جديد</button>
+</section>
+
+</main>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+<div class="logo">LAI<span>VO</span></div>
+<p>منصة توظيف عراقية تهدف إلى ربط الشركات ووكالات التوظيف بالباحثين عن العمل.</p>
+</div>
+
+<div>
+<h3>روابط سريعة</h3>
+<a href="#home">الرئيسية</a>
+<a href="#jobs">الوظائف</a>
+<a href="#companies">الشركات</a>
+<a href="#agencies">وكالات التوظيف</a>
+</div>
+
+<div>
+<h3>التواصل</h3>
+<a href="https://t.me/Lith334" target="_blank">Telegram: @Lith334</a>
+<a href="#about">من نحن</a>
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 LAIVO. جميع الحقوق محفوظة.
+</div>
+
+</footer>
+
+<a class="telegram" href="https://t.me/Lith334" target="_blank">✈ تواصل معنا</a>
+
+<!-- نافذة تسجيل الدخول -->
+
+<div class="modal" id="login">
+<div class="modal-content">
+<span class="close" onclick="closeModal('login')">×</span>
+<h2>تسجيل الدخول</h2>
+<input placeholder="البريد الإلكتروني">
+<input type="password" placeholder="كلمة المرور">
+<button class="btn" onclick="demoMessage()">دخول</button>
+</div>
+</div>
+
+<!-- نافذة إنشاء حساب -->
+
+<div class="modal" id="register">
+<div class="modal-content">
+<span class="close" onclick="closeModal('register')">×</span>
+<h2>إنشاء حساب جديد</h2>
+<input placeholder="الاسم الكامل">
+<input type="email" placeholder="البريد الإلكتروني">
+<input placeholder="رقم الهاتف">
+<select id="registerGov"></select>
+<select>
+<option>باحث عن عمل</option>
+<option>شركة</option>
+<option>وكالة توظيف</option>
+</select>
+<button class="btn" onclick="demoMessage()">إنشاء الحساب</button>
+</div>
+</div>
+
+<!-- نافذة الشركة -->
+
+<div class="modal" id="company">
+<div class="modal-content">
+<span class="close" onclick="closeModal('company')">×</span>
+<h2>تسجيل شركة</h2>
+<input id="companyName" placeholder="اسم الشركة">
+<input placeholder="البريد الإلكتروني">
+<input placeholder="رقم الهاتف">
+<select id="companyGov"></select>
+<textarea placeholder="نبذة عن الشركة"></textarea>
+<button class="btn" onclick="saveCompany()">إرسال الطلب</button>
+</div>
+</div>
+
+<!-- نافذة الوكالة -->
+
+<div class="modal" id="agency">
+<div class="modal-content">
+<span class="close" onclick="closeModal('agency')">×</span>
+<h2>تسجيل وكالة توظيف</h2>
+<input id="agencyName" placeholder="اسم الوكالة">
+<input placeholder="البريد الإلكتروني">
+<input placeholder="رقم الهاتف">
+<select id="agencyGov"></select>
+<textarea placeholder="خدمات الوكالة"></textarea>
+<button class="btn" onclick="saveAgency()">إرسال الطلب</button>
+</div>
+</div>
+
+<!-- نافذة نشر وظيفة -->
+
+<div class="modal" id="job">
+<div class="modal-content">
+<span class="close" onclick="closeModal('job')">×</span>
+<h2>نشر وظيفة جديدة</h2>
+<input id="jobTitle" placeholder="المسمى الوظيفي">
+<input id="jobCompany" placeholder="اسم الشركة">
+<select id="jobGov"></select>
+<input id="jobSalary" placeholder="الراتب">
+<input id="jobCategory" placeholder="التخصص">
+<textarea id="jobDescription" placeholder="وصف الوظيفة والمتطلبات"></textarea>
+<button class="btn" onclick="publishJob()">نشر الوظيفة</button>
+</div>
+</div>
+
+<script>
+
+const governorates=[
+"بغداد","البصرة","نينوى","أربيل","النجف",
+"كربلاء","السليمانية","دهوك","الأنبار","ديالى",
+"كركوك","صلاح الدين","واسط","بابل",
+"القادسية","المثنى","ذي قار","ميسان"
+];
+
+function loadStorage(key,defaultValue){
+try{
+return JSON.parse(localStorage.getItem(key))??defaultValue;
+}catch(e){
+return defaultValue;
+}
+}
+
+let jobs=loadStorage("laivo_jobs",[]);
+let companies=loadStorage("laivo_companies",[]);
+let agencies=loadStorage("laivo_agencies",[]);
+
+function saveStorage(){
+localStorage.setItem("laivo_jobs",JSON.stringify(jobs));
+localStorage.setItem("laivo_companies",JSON.stringify(companies));
+localStorage.setItem("laivo_agencies",JSON.stringify(agencies));
+}
+
+function fillSelect(id){
+const element=document.getElementById(id);
+if(!element)return;
+element.innerHTML='<option value="">اختر المحافظة</option>';
+governorates.forEach(g=>{
+element.add(new Option(g,g));
+});
+}
+
+["location","registerGov","companyGov","agencyGov","jobGov"].forEach(fillSelect);
+
+const govGrid=document.getElementById("govGrid");
+
+governorates.forEach(g=>{
+const div=document.createElement("div");
+div.className="gov";
+div.textContent=g;
+div.onclick=()=>{
+document.getElementById("location").value=g;
+searchJobs();
+document.getElementById("jobs").scrollIntoView({behavior:"smooth"});
+};
+govGrid.appendChild(div);
+});
+
+function openModal(id){
+document.getElementById(id).style.display="flex";
+}
+
+function closeModal(id){
+document.getElementById(id).style.display="none";
+}
+
+function demoMessage(){
+alert("هذه نسخة تجريبية. يحتاج تسجيل الدخول الحقيقي إلى خادم وقاعدة بيانات.");
+}
+
+function renderJobs(list=jobs){
+const container=document.getElementById("jobsList");
+container.innerHTML="";
+
+if(list.length===0){
+container.innerHTML='<div class="empty">لا توجد وظائف منشورة حالياً. يمكن إضافة وظائف تجريبية من نموذج النشر.</div>';
+return;
+}
+
+list.forEach(job=>{
+const card=document.createElement("div");
+card.className="card";
+
+const tag=document.createElement("span");
+tag.className="tag";
+tag.textContent=job.category;
+
+const title=document.createElement("h3");
+title.textContent=job.title;
+
+const company=document.createElement("p");
+company.textContent="🏢 "+job.company;
+
+const gov=document.createElement("p");
+gov.textContent="📍 "+job.gov;
+
+const salary=document.createElement("p");
+salary.textContent="💰 "+job.salary;
+
+const apply=document.createElement("button");
+apply.className="btn";
+apply.textContent="التقديم على الوظيفة";
+apply.onclick=()=>alert("التقديم الإلكتروني سيُفعّل بعد ربط قاعدة البيانات.");
+
+card.append(tag,title,company,gov,salary,apply);
+container.appendChild(card);
+});
+}
+
+function searchJobs(){
+const keyword=document.getElementById("keyword").value.trim().toLowerCase();
+const gov=document.getElementById("location").value;
+const category=document.getElementById("jobType").value;
+
+const filtered=jobs.filter(j=>
+(!keyword||(j.title+" "+j.company+" "+j.category+" "+(j.description||"")).toLowerCase().includes(keyword))&&
+(!gov||j.gov===gov)&&
+(!category||j.category.includes(category))
+);
+
+renderJobs(filtered);
+}
+
+function filterCategory(category){
+document.getElementById("jobType").value=category;
+searchJobs();
+document.getElementById("jobs").scrollIntoView({behavior:"smooth"});
+}
+
+function publishJob(){
+const title=document.getElementById("jobTitle").value.trim();
+const company=document.getElementById("jobCompany").value.trim();
+const gov=document.getElementById("jobGov").value;
+const salary=document.getElementById("jobSalary").value.trim();
+const category=document.getElementById("jobCategory").value.trim();
+const description=document.getElementById("jobDescription").value.trim();
+
+if(!title||!company||!gov||!salary||!category){
+alert("يرجى إكمال الحقول المطلوبة.");
+return;
+}
+
+jobs.unshift({
+id:Date.now(),
+title,company,gov,salary,category,description
+});
+
+saveStorage();
+renderJobs();
+updateDashboard();
+closeModal("job");
+alert("تمت إضافة الوظيفة في النسخة التجريبية.");
+}
+
+function saveCompany(){
+const name=document.getElementById("companyName").value.trim();
+if(!name){
+alert("يرجى إدخال اسم الشركة.");
+return;
+}
+companies.push({name});
+saveStorage();
+updateDashboard();
+closeModal("company");
+alert("تم حفظ بيانات الشركة في النسخة التجريبية.");
+}
+
+function saveAgency(){
+const name=document.getElementById("agencyName").value.trim();
+if(!name){
+alert("يرجى إدخال اسم الوكالة.");
+return;
+}
+agencies.push({name});
+saveStorage();
+updateDashboard();
+closeModal("agency");
+alert("تم حفظ بيانات الوكالة في النسخة التجريبية.");
+}
+
+function updateDashboard(){
+document.getElementById("adminJobs").textContent=jobs.length;
+document.getElementById("adminCompanies").textContent=companies.length;
+document.getElementById("adminAgencies").textContent=agencies.length;
+}
+
+renderJobs();
+updateDashboard();
+
+</script>
+
+</body>
+</html>
